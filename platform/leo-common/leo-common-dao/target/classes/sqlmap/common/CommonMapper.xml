@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sqlmap.common">
+
+
+	<select id="getIdSequence" resultType="long" flushCache="true">select
+		nextval('default_id_sequence');
+	</select>
+	<!-- <select id="getCodeSequence" resultType="long" flushCache="true" parameterType="String" 
+		>select default_code_sequence.nextval from dual</select> -->
+	<select id="getCodeSequence" resultType="long" flushCache="true"
+		parameterType="map">
+		 <![CDATA[
+		 SELECT NEXTVAL('${sequenceName}');
+		 ]]>
+	</select>
+
+	<sql id="getIdSequenceSql">select default_id_sequence.nextval from
+		dual
+	</sql>
+
+
+	<sql id="order_sql">
+		<if test="orderFields != null and orderFields.size() > 0">
+			order by
+			<foreach collection="orderFields" item="orderField"
+				separator=","> ${orderField.field} ${orderField.orderType}</foreach>
+		</if>
+
+	</sql>
+
+</mapper>

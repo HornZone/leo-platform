@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+	<!-- For mail settings and future properties files -->
+	<bean id="propertyConfigurer1"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:springtest/resources.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 扫描注解Bean -->
+	<context:component-scan
+		base-package="com.leo.platform.upms.service.**.impl,com.leo.platform.upms.dao.impl,com.leo.platform.upms.service.**.task,com.leo.platform.upms.service.**.aop">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	
+	<!-- Enable @AspectJ support -->
+	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/> 
+	
+	<bean
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<property name="proxyTargetClass" value="true" />
+	</bean>
+	<!-- 开启AOP监听 只对当前配置文件有效 -->
+	<aop:aspectj-autoproxy expose-proxy="true" />
+	<import resource="spring-config-dao.xml" />
+	<import resource="spring-config-cache.xml" />
+	<import resource="spring-config-task.xml" />
+	<import resource="spring-config-shiro.xml" />
+	<import resource="spring-config-monitor.xml" />
+	<!--<import resource="spring-speed-up.xml"/> -->
+
+</beans>

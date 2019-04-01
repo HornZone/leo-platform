@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.leo.platform</groupId>
+    <artifactId>leo-pay</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>leo-pay-trade-service</artifactId>
+  
+  <dependencies>
+    <dependency>
+        <groupId>com.leo.platform</groupId>
+        <artifactId>leo-pay-trade-vo</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    
+    <dependency>
+        <groupId>com.leo.platform</groupId>
+        <artifactId>leo-pay-trade-entity</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.leo.platform</groupId>
+        <artifactId>leo-pay-reconciliation-entity</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.leo.platform</groupId>
+    	<artifactId>leo-pay-trade-dao</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.leo.platform</groupId>
+        <artifactId>leo-pay-user-service</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.leo.platform</groupId>
+    	<artifactId>leo-pay-notify-service</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.leo.platform</groupId>
+    	<artifactId>leo-pay-trade-exception</artifactId>
+    	<version>${project.version}</version>
+    </dependency>
+  </dependencies>
+</project>
